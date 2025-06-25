@@ -159,49 +159,49 @@ class SplitTabManager {
         chrome.contextMenus.create({
             id: 'split-tab-main',
             title: 'Split Tab',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'split-2',
             parentId: 'split-tab-main',
             title: 'Split into 2 tabs',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'split-3',
             parentId: 'split-tab-main',
             title: 'Split into 3 tabs',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'split-4',
             parentId: 'split-tab-main',
             title: 'Split into 4 tabs',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'separator',
             parentId: 'split-tab-main',
             type: 'separator',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'quick-research',
             parentId: 'split-tab-main',
             title: '🔍 Research Mode',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'quick-work',
             parentId: 'split-tab-main',
             title: '💼 Work Mode',
-            contexts: ['page', 'tab']
+            contexts: ['page']
         });
 
         // Handle context menu clicks
