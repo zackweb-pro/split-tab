@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Tab</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Split Tab</h1>
+            <p>Transform your browsing experience</p>
+        </header>
+        
+        <div class="split-options">
+            <div class="option-card" data-split="2">
+                <div class="option-icon">⚡</div>
+                <h3>Split into 2 Tabs</h3>
+                <p>Side-by-side browsing</p>
+            </div>
+            
+            <div class="option-card" data-split="3">
+                <div class="option-icon">🔥</div>
+                <h3>Split into 3 Tabs</h3>
+                <p>Main content + 2 reference tabs</p>
+            </div>
+            
+            <div class="option-card" data-split="4">
+                <div class="option-icon">💪</div>
+                <h3>Split into 4 Tabs</h3>
+                <p>Maximum multitasking power</p>
+            </div>
+        </div>
+        
+        <div class="quick-modes">
+            <h3>Quick Workflows</h3>
+            <div class="mode-buttons">
+                <button class="mode-btn" data-mode="research">🔍 Research</button>
+                <button class="mode-btn" data-mode="shopping">🛒 Shopping</button>
+                <button class="mode-btn" data-mode="work">💼 Work</button>
+                <button class="mode-btn" data-mode="social">📱 Social</button>
+            </div>
+        </div>
+        
+        <div class="settings">
+            <button id="settings-btn">⚙️ Settings</button>
+        </div>
+    </div>
+    
+    <!-- Split Configuration Modal -->
+    <div id="config-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Configure Split</h2>
+                <button id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="tab-configs"></div>
+                <div class="modal-actions">
+                    <button id="cancel-split">Cancel</button>
+                    <button id="execute-split">Split Tabs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

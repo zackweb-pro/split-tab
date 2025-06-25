@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Tab Settings</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Split Tab Settings</h1>
+            <p>Customize your tab splitting experience</p>
+        </header>
+
+        <main>
+            <section class="settings-section">
+                <h2>🎯 Split Preferences</h2>
+                <div class="setting-item">
+                    <label for="defaultSplitCount">Default Split Count:</label>
+                    <select id="defaultSplitCount">
+                        <option value="2">2 Tabs</option>
+                        <option value="3">3 Tabs</option>
+                        <option value="4">4 Tabs</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="autoGroupTabs">Auto-group split tabs:</label>
+                    <input type="checkbox" id="autoGroupTabs" checked>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="tabPosition">New tab position:</label>
+                    <select id="tabPosition">
+                        <option value="after">After current tab</option>
+                        <option value="before">Before current tab</option>
+                        <option value="end">At the end</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="pinImportantTabs">Auto-pin important tabs (Gmail, Calendar):</label>
+                    <input type="checkbox" id="pinImportantTabs">
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>🚀 Quick Modes</h2>
+                <div class="setting-item">
+                    <label for="enableQuickModes">Enable quick workflow modes:</label>
+                    <input type="checkbox" id="enableQuickModes" checked>
+                </div>
+                
+                <div id="quickModesConfig" class="quick-modes-config">
+                    <div class="mode-config">
+                        <h3>🔍 Research Mode</h3>
+                        <div class="mode-urls">
+                            <input type="url" placeholder="https://www.google.com/search?q={{title}}" value="https://www.google.com/search?q={{title}}">
+                            <input type="url" placeholder="https://scholar.google.com" value="https://scholar.google.com">
+                            <input type="url" placeholder="chrome://newtab/" value="chrome://newtab/">
+                        </div>
+                    </div>
+                    
+                    <div class="mode-config">
+                        <h3>🛒 Shopping Mode</h3>
+                        <div class="mode-urls">
+                            <input type="url" placeholder="https://www.google.com/search?tbm=shop&q={{title}}" value="https://www.google.com/search?tbm=shop&q={{title}}">
+                            <input type="url" placeholder="https://www.amazon.com" value="https://www.amazon.com">
+                            <input type="url" placeholder="https://www.ebay.com" value="https://www.ebay.com">
+                        </div>
+                    </div>
+                    
+                    <div class="mode-config">
+                        <h3>💼 Work Mode</h3>
+                        <div class="mode-urls">
+                            <input type="url" placeholder="https://mail.google.com" value="https://mail.google.com">
+                            <input type="url" placeholder="https://calendar.google.com" value="https://calendar.google.com">
+                            <input type="url" placeholder="https://drive.google.com" value="https://drive.google.com">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>🌟 Favorite URLs</h2>
+                <div class="setting-item">
+                    <label>Manage your favorite sites for quick access:</label>
+                    <div class="favorites-list" id="favoritesList"></div>
+                    <div class="add-favorite">
+                        <input type="url" id="newFavoriteUrl" placeholder="https://example.com">
+                        <input type="text" id="newFavoriteTitle" placeholder="Site name">
+                        <button id="addFavorite">Add Favorite</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>⚙️ Advanced Settings</h2>
+                <div class="setting-item">
+                    <label for="smartSuggestions">Enable smart URL suggestions:</label>
+                    <input type="checkbox" id="smartSuggestions" checked>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="contextMenuEnabled">Show context menu options:</label>
+                    <input type="checkbox" id="contextMenuEnabled" checked>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="showNotifications">Show split notifications:</label>
+                    <input type="checkbox" id="showNotifications" checked>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="trackUsage">Track usage statistics (for improvement):</label>
+                    <input type="checkbox" id="trackUsage" checked>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>📊 Usage Statistics</h2>
+                <div class="stats-container" id="statsContainer">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalSplits">0</div>
+                        <div class="stat-label">Total Splits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="averageSplit">0</div>
+                        <div class="stat-label">Average Split Size</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="streakDays">0</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>💾 Data Management</h2>
+                <div class="data-actions">
+                    <button id="exportData" class="action-btn">Export Settings</button>
+                    <button id="importData" class="action-btn">Import Settings</button>
+                    <button id="resetData" class="action-btn danger">Reset All Data</button>
+                </div>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+            </section>
+        </main>
+
+        <footer>
+            <div class="save-actions">
+                <button id="saveSettings" class="save-btn">Save Settings</button>
+                <button id="resetDefaults" class="reset-btn">Reset to Defaults</button>
+            </div>
+            <div class="version-info">
+                <span>Split Tab Extension v1.0</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../lib/storage-manager.js"></script>
+    <script src="../lib/utils.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

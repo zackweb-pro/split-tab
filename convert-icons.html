@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG to PNG Converter</title>
+</head>
+<body>
+    <canvas id="canvas16" width="16" height="16" style="border: 1px solid #ccc;"></canvas>
+    <canvas id="canvas48" width="48" height="48" style="border: 1px solid #ccc;"></canvas>
+    <canvas id="canvas128" width="128" height="128" style="border: 1px solid #ccc;"></canvas>
+    
+    <script>
+        // Function to convert SVG to PNG
+        function svgToPng(svgContent, canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, size, size);
+                
+                // Create download link
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `icon${size}.png`;
+                    a.textContent = `Download icon${size}.png`;
+                    document.body.appendChild(a);
+                    document.body.appendChild(document.createElement('br'));
+                });
+            };
+            
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            img.src = url;
+        }
+        
+        // SVG content for each size
+        const svg16 = `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <circle cx="8" cy="8" r="7" fill="url(#grad1)" stroke="#5a67d8" stroke-width="1"/>
+            <path d="M4 5 L12 5 M4 8 L12 8 M4 11 L12 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 3 L6 13 M10 3 L10 13" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+            <path d="M8.5 4 L7 7 L9 7 L7.5 10" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.8"/>
+        </svg>`;
+        
+        const svg48 = `<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad48" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="20" fill="url(#grad48)" stroke="#5a67d8" stroke-width="2"/>
+            <g stroke="white" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="16" x2="36" y2="16"/>
+                <line x1="12" y1="24" x2="36" y2="24"/>
+                <line x1="12" y1="32" x2="36" y2="32"/>
+                <line x1="18" y1="10" x2="18" y2="38" opacity="0.8"/>
+                <line x1="24" y1="10" x2="24" y2="38"/>
+                <line x1="30" y1="10" x2="30" y2="38" opacity="0.8"/>
+            </g>
+            <path d="M26 12 L20 20 L26 20 L22 28" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+            <circle cx="36" cy="12" r="3" fill="#ffd700" opacity="0.8"/>
+        </svg>`;
+        
+        const svg128 = `<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad128" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                    <stop offset="30%" style="stop-color:#764ba2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <circle cx="64" cy="64" r="54" fill="url(#grad128)" stroke="#5a67d8" stroke-width="4"/>
+            <circle cx="64" cy="64" r="44" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <g stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.95">
+                <line x1="30" y1="40" x2="98" y2="40"/>
+                <line x1="30" y1="56" x2="98" y2="56"/>
+                <line x1="30" y1="72" x2="98" y2="72"/>
+                <line x1="30" y1="88" x2="98" y2="88"/>
+                <line x1="46" y1="24" x2="46" y2="104" opacity="0.8"/>
+                <line x1="64" y1="24" x2="64" y2="104"/>
+                <line x1="82" y1="24" x2="82" y2="104" opacity="0.8"/>
+            </g>
+            <g fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+                <rect x="32" y="26" width="12" height="8" rx="2"/>
+                <rect x="48" y="26" width="12" height="8" rx="2"/>
+                <rect x="66" y="26" width="12" height="8" rx="2"/>
+                <rect x="84" y="26" width="12" height="8" rx="2"/>
+            </g>
+            <path d="M70 30 L54 48 L66 48 L58 66" stroke="#ffd700" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="96" cy="32" r="6" fill="#ffd700" opacity="0.9"/>
+            <circle cx="96" cy="32" r="3" fill="white" opacity="0.8"/>
+            <path d="M40 100 Q64 110 88 100" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+        </svg>`;
+        
+        // Convert SVGs to PNGs
+        setTimeout(() => {
+            svgToPng(svg16, 'canvas16', 16);
+            svgToPng(svg48, 'canvas48', 48);
+            svgToPng(svg128, 'canvas128', 128);
+        }, 100);
+    </script>
+</body>
+</html>

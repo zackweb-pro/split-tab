@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Split Tab",
+  "version": "1.0.0",
+  "description": "Split one browser tab into multiple tabs with different content to enhance multitasking and productivity",
+  
+  "permissions": [
+    "tabs",
+    "contextMenus",
+    "storage",
+    "activeTab"
+  ],
+  
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content-script.js"]
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Split Tab",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  
+  "commands": {
+    "split-2-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+2"
+      },
+      "description": "Split into 2 tabs"
+    },
+    "split-3-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+3"
+      },
+      "description": "Split into 3 tabs"
+    },
+    "split-4-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+4"
+      },
+      "description": "Split into 4 tabs"
+    }
+  },
+  
+  "options_page": "settings/settings.html"
+}
